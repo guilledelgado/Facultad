@@ -1,0 +1,63 @@
+JAMAICA altura: 4	|HI: CHILE	|HD: PERU
+CHILE altura: 3	|HI: BOLIVIA	|HD: ECUADOR
+BOLIVIA altura: 2	|HI: ARGENTINA	|HD: CANADA
+ARGENTINA altura: 0	|HI: ~ 	|HD: ~
+CANADA altura: 1	|HI: BRASIL	|HD: ~
+BRASIL altura: 0	|HI: ~ 	|HD: ~
+ECUADOR altura: 2	|HI: COLOMBIA	|HD: ESTADOS UNIDOS
+COLOMBIA altura: 1	|HI: ~ 	|HD: COSTA RICA
+COSTA RICA altura: 0	|HI: ~ 	|HD: ~
+ESTADOS UNIDOS altura: 0	|HI: ~ 	|HD: ~
+PERU altura: 2	|HI: PANAMA	|HD: VENEZUELA
+PANAMA altura: 1	|HI: MEXICO	|HD: PARAGUAY
+MEXICO altura: 0	|HI: ~ 	|HD: ~
+PARAGUAY altura: 0	|HI: ~ 	|HD: ~
+VENEZUELA altura: 1	|HI: URUGUAY	|HD: ~
+URUGUAY altura: 0	|HI: ~ 	|HD: ~
+ 
+Vertice: SPRINGFIELD-----136.0---->DENVER	-----121.0---->HOUSTON	-----111.0---->ATLANTA	-----127.0---->CHARLOTTE	
+Vertice: WASHINGTON-----153.0---->KANSAS	-----87.0---->CHARLOTTE	-----115.0---->NUEVA YORK	
+Vertice: CHARLOTTE-----127.0---->SPRINGFIELD	-----82.0---->ORLANDO	-----146.0---->MIAMI	-----87.0---->WASHINGTON	-----115.0---->NUEVA YORK	
+Vertice: ORLANDO-----163.0---->HOUSTON	-----94.0---->ATLANTA	-----82.0---->CHARLOTTE	
+Vertice: KANSAS-----160.0---->PHOENIX	-----174.0---->LAS VEGAS	-----94.0---->DALLAS	-----153.0---->WASHINGTON	
+Vertice: OKLAHOMA-----213.0---->SEATTLE	-----134.0---->SALT LAKE CITY	-----105.0---->DENVER	-----123.0---->DALLAS	
+Vertice: HOUSTON-----72.0---->AUSTIN	-----72.0---->DALLAS	-----121.0---->SPRINGFIELD	-----163.0---->ORLANDO	-----161.0---->MIAMI	
+Vertice: DALLAS-----64.0---->AUSTIN	-----123.0---->OKLAHOMA	-----94.0---->KANSAS	-----72.0---->HOUSTON	
+Vertice: AUSTIN-----186.0---->SAN DIEGO	-----148.0---->PHOENIX	-----64.0---->DALLAS	-----72.0---->HOUSTON	
+Vertice: MIAMI-----161.0---->HOUSTON	-----146.0---->CHARLOTTE	-----198.0---->NUEVA YORK	
+Vertice: ATLANTA-----111.0---->SPRINGFIELD	-----138.0---->NUEVA YORK	-----94.0---->ORLANDO	
+Vertice: DENVER-----159.0---->SEATTLE	-----156.0---->SAN FRANCISCO	-----92.0---->SALT LAKE CITY	-----136.0---->SPRINGFIELD	-----105.0---->OKLAHOMA	
+Vertice: PHOENIX-----86.0---->LOS ANGELES	-----89.0---->SAN DIEGO	-----77.0---->LAS VEGAS	-----160.0---->KANSAS	-----148.0---->AUSTIN	
+Vertice: SAN DIEGO-----170.0---->SAN FRANCISCO	-----53.0---->LOS ANGELES	-----89.0---->PHOENIX	-----186.0---->AUSTIN	
+Vertice: LAS VEGAS-----76.0---->SAN FRANCISCO	-----75.0---->LOS ANGELES	-----77.0---->PHOENIX	-----174.0---->KANSAS	
+Vertice: LOS ANGELES-----70.0---->SAN FRANCISCO	-----75.0---->LAS VEGAS	-----86.0---->PHOENIX	-----53.0---->SAN DIEGO	
+Vertice: SALT LAKE CITY-----128.0---->SEATTLE	-----137.0---->SAN FRANCISCO	-----92.0---->DENVER	-----134.0---->OKLAHOMA	
+Vertice: NUEVA YORK-----138.0---->ATLANTA	-----198.0---->MIAMI	-----115.0---->CHARLOTTE	-----115.0---->WASHINGTON	
+Vertice: SAN FRANCISCO-----130.0---->SEATTLE	-----137.0---->SALT LAKE CITY	-----156.0---->DENVER	-----70.0---->LOS ANGELES	-----170.0---->SAN DIEGO	-----76.0---->LAS VEGAS	
+Vertice: SEATTLE-----130.0---->SAN FRANCISCO	-----128.0---->SALT LAKE CITY	-----159.0---->DENVER	-----213.0---->OKLAHOMA	
+ 
+ [1] Dominio: ESTADOS UNIDOS - PANAMA Rango: [1 - 2 | GRUPO]
+ [3] Dominio: JAMAICA - VENEZUELA Rango: [0 - 3 | GRUPO]
+ [4] Dominio: COLOMBIA - PARAGUAY Rango: [2 - 1 | GRUPO]
+ [5] Dominio: ARGENTINA - PERU Rango: [2 - 0 | GRUPO]
+ [6] Dominio: MEXICO - VENEZUELA Rango: [0 - 1 | GRUPO]
+ [7] Dominio: BOLIVIA - ESTADOS UNIDOS Rango: [0 - 2 | GRUPO]
+ [9] Dominio: COSTA RICA - PARAGUAY Rango: [2 - 1 | GRUPO]
+ [9] Dominio: CANADA - CHILE Rango: [0 - 0 | GRUPO]
+ [9] Dominio: COLOMBIA - COSTA RICA Rango: [3 - 0 | GRUPO]
+ [11] Dominio: ESTADOS UNIDOS - URUGUAY Rango: [0 - 1 | GRUPO]
+ [12] Dominio: ECUADOR - MEXICO Rango: [0 - 0 | GRUPO]
+ [13] Dominio: BRASIL - PARAGUAY Rango: [4 - 1 | GRUPO]
+ [15] Dominio: CHILE - PERU Rango: [0 - 0 | GRUPO]
+ [16] Dominio: BOLIVIA - URUGUAY Rango: [0 - 5 | GRUPO]
+ [16] Dominio: ARGENTINA - CHILE Rango: [1 - 0 | GRUPO]
+ [16] Dominio: BRASIL - COSTA RICA Rango: [0 - 0 | GRUPO]
+ [21] Dominio: JAMAICA - MEXICO Rango: [0 - 1 | GRUPO]
+ [23] Dominio: BRASIL - COLOMBIA Rango: [1 - 1 | GRUPO]
+ [26] Dominio: BOLIVIA - PANAMA Rango: [1 - 3 | GRUPO]
+ [27] Dominio: ECUADOR - JAMAICA Rango: [3 - 1 | GRUPO]
+ [27] Dominio: ARGENTINA - CANADA Rango: [2 - 0 | GRUPO]
+ [30] Dominio: CANADA - PERU Rango: [1 - 0 | GRUPO]
+ [30] Dominio: PANAMA - URUGUAY Rango: [1 - 3 | GRUPO]
+ [30] Dominio: ECUADOR - VENEZUELA Rango: [1 - 2 | GRUPO]
+ 
