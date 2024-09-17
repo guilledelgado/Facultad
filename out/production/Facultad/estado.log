@@ -1,0 +1,17 @@
+MEXICO altura: 4	|HI: CHILE	|HD: PERU
+CHILE altura: 3	|HI: BOLIVIA	|HD: ECUADOR
+BOLIVIA altura: 2	|HI: ARGENTINA	|HD: CANADA
+ARGENTINA altura: 0	|HI: ~ 	|HD: ~
+CANADA altura: 1	|HI: BRASIL	|HD: ~
+BRASIL altura: 0	|HI: ~ 	|HD: ~
+ECUADOR altura: 2	|HI: COLOMBIA	|HD: ESTADOS UNIDOS
+COLOMBIA altura: 1	|HI: ~ 	|HD: COSTA RICA
+COSTA RICA altura: 0	|HI: ~ 	|HD: ~
+ESTADOS UNIDOS altura: 0	|HI: ~ 	|HD: ~
+PERU altura: 3	|HI: PANAMA	|HD: VENEZUELA
+PANAMA altura: 2	|HI: ~ 	|HD: PARAGUAY
+PARAGUAY altura: 1	|HI: PANTERA	|HD: ~
+PANTERA altura: 0	|HI: ~ 	|HD: ~
+VENEZUELA altura: 1	|HI: URUGUAY	|HD: ~
+URUGUAY altura: 0	|HI: ~ 	|HD: ~
+ 
