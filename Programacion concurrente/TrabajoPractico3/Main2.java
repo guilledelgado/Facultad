@@ -7,5 +7,7 @@ public class Main2 {
         Entidad entidad2 = new Entidad(3, energia);
         Thread e1 = new Thread(entidad1, "Criatura Oscura");
         Thread e2 = new Thread(entidad2, "Sanador");
+        e1.start();
+        e2.start();
     }
 }

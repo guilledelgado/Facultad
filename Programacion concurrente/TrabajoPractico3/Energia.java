@@ -3,10 +3,13 @@ package TrabajoPractico3;
 public class Energia {
     private int energia = 10;
 
-    public Energia() {}
+    public Energia() {
+    }
 
     public void modificarEnergia(int cantidad) {
-        energia += cantidad;
+        if (cantidad + energia <= 10) {
+            energia += cantidad;
+        }
     }
 
     public int getEnergia() {
