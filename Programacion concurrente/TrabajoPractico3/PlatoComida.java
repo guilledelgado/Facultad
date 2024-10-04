@@ -1,15 +1,18 @@
 package TrabajoPractico3;
 
 public class PlatoComida {
-    private boolean estaEnUso = false;
+    private boolean estaEnUso;
 
-    public PlatoComida() {}
+    public PlatoComida() {
+        estaEnUso = false;
+    }
 
-    public void usarPlato(){
+    public void usarPlato() {
         estaEnUso = true;
     }
 
-    public void dejarPlato(){
+    public void dejarPlato() {
         estaEnUso = false;
     }
+
 }

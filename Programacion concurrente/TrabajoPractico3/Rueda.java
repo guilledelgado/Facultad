@@ -1,15 +1,17 @@
 package TrabajoPractico3;
 
 public class Rueda {
-    private boolean estaEnUso = false;
+    private boolean estaEnUso;
+    public Rueda() {
+        estaEnUso = false;
+    }
 
-    public Rueda() {}
-
-    public void usarRueda(){
+    public void usarRueda() {
         estaEnUso = true;
     }
 
-    public void dejarRueda(){
+    public void dejarRueda() {
         estaEnUso = false;
     }
+
 }

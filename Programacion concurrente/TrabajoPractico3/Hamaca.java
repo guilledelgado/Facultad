@@ -1,15 +1,17 @@
 package TrabajoPractico3;
 
 public class Hamaca {
-    private boolean estaEnUso = false;
+    private boolean estaEnUso;
 
-    public Hamaca() {}
+    public Hamaca() {
+        estaEnUso = false;
+    }
 
-    public void usarHamaca(){
+    public void usarHamaca() {
         estaEnUso = true;
     }
 
-    public void dejarHamaca(){
+    public void dejarHamaca() {
         estaEnUso = false;
     }
 }
