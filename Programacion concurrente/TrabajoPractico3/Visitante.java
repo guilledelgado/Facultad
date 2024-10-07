@@ -12,7 +12,7 @@ public class Visitante implements Runnable {
         parqueTematico = pt;
     }
 
-    private synchronized boolean reservarArea(int area) {
+    private boolean reservarArea(int area) {
         boolean exito = false;
         if (areasReservadas[area] == 0 && !parqueTematico.estaLleno(area)) {
             parqueTematico.reservarLugar(area);

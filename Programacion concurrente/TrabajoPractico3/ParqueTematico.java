@@ -10,7 +10,7 @@ public class ParqueTematico {
         }
     }
 
-    public void reservarLugar(int area){
+    public synchronized void reservarLugar(int area){
         if(areas[area] > 0){
             areas[area]--;
         }

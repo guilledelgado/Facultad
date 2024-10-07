@@ -6,10 +6,10 @@ public class Main6 {
     public static void main(String[] args) {
         ArregloNum arreglo = new ArregloNum();
         SumadorArreglo suma1 = new SumadorArreglo(arreglo,0,10000);
-        SumadorArreglo suma2 = new SumadorArreglo(arreglo,10001,20000);
-        SumadorArreglo suma3 = new SumadorArreglo(arreglo,20001,30000);
-        SumadorArreglo suma4 = new SumadorArreglo(arreglo,30001,40000);
-        SumadorArreglo suma5 = new SumadorArreglo(arreglo,40001,50000);
+        SumadorArreglo suma2 = new SumadorArreglo(arreglo,10000,20000);
+        SumadorArreglo suma3 = new SumadorArreglo(arreglo,20000,30000);
+        SumadorArreglo suma4 = new SumadorArreglo(arreglo,30000,40000);
+        SumadorArreglo suma5 = new SumadorArreglo(arreglo,40000,50000);
         Thread s1 = new Thread(suma1);
         Thread s2 = new Thread(suma2);
         Thread s3 = new Thread(suma3);
