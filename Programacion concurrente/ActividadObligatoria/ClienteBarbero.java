@@ -1,21 +1,24 @@
 package ActividadObligatoria;
 
 public class ClienteBarbero implements Runnable{
-    private Sillon sillon;
+    private Barberia barberia;
 
-    public ClienteBarbero(Sillon sillon) {
-        this.sillon = sillon;
+    public ClienteBarbero(Barberia bar) {
+        this.barberia = bar;
     }
 
     public void run() {
         try{
-            while(true) {
-                sillon.sentarCliente();
-                System.out.println("Se sienta el cliente");
-                sillon.solicitarCorte();
+            if(barberia.sentarseSillaEspera()){
+                barberia.sentarseSillon();
+                barberia.despertarBarbero();
+                barberia.elBarberoHaceSuMagia();
+                barberia.salirDelSillon();
+            } else {
+                System.out.println("No hay lugar disponible");
             }
         }catch(Exception e){
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 }

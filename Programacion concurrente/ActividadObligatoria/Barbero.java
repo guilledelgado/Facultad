@@ -1,15 +1,16 @@
 package ActividadObligatoria;
 
 public class Barbero implements Runnable {
-    private Sillon sillon;
+    private Barberia barberia;
 
-    public Barbero(Sillon sillon) {
-        this.sillon = sillon;
+    public Barbero(Barberia bar) {
+        this.barberia = bar;
     }
 
     private void cortarPelo() throws InterruptedException {
+        int tiempo = (int) (Math.random()*5 + 1);
         System.out.println("Cortando el pelo");
-        Thread.sleep(5000);
+        Thread.sleep(tiempo * 1000);
         System.out.println("Termino");
     }
 
@@ -17,12 +18,12 @@ public class Barbero implements Runnable {
         System.out.println("Durmiendo...");
         try{
             while (true) {
-                sillon.esperarCliente();
+                barberia.aMimir();
                 this.cortarPelo();
-                sillon.terminarCorte();
+                barberia.elBarberoYaHizoSuMagia();
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
