@@ -21,7 +21,7 @@ public class Observatorio {
 
     public Observatorio(int capacidad, int maxVisitantes, int maxMantenimiento, int maxInvestigadores) {
         this.capacidad = capacidad;
-        this.mutex = new ReentrantLock();
+        this.mutex = new ReentrantLock(true);
         this.esperaVisitantes = mutex.newCondition();
         this.esperaMantenimiento = mutex.newCondition();
         this.esperaInvestigadores = mutex.newCondition();
