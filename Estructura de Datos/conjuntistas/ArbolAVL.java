@@ -209,7 +209,7 @@ public class ArbolAVL {
         if (this.raiz.getElem().compareTo(elemento) == 0) {
             exito = true;
             if (this.raiz.getIzquierdo() != null && this.raiz.getDerecho() != null) {
-                eliminarCasoTres(this.raiz);
+                eliminarCasoTres(this.raiz, this.raiz, this.raiz.getDerecho());
             } else if ((this.raiz.getIzquierdo() != null && this.raiz.getDerecho() == null)
                     || (this.raiz.getIzquierdo() == null && this.raiz.getDerecho() != null)) {
                 eliminarCasoDos(this.raiz, null);
@@ -234,7 +234,7 @@ public class ArbolAVL {
             if (elemento.compareTo(n.getElem()) == 0) {
                 exito = true;
                 if (n.getIzquierdo() != null && n.getDerecho() != null) {
-                    eliminarCasoTres(n);
+                    eliminarCasoTres(n, n, n.getDerecho());
                 } else if ((n.getIzquierdo() != null && n.getDerecho() == null)
                         || (n.getIzquierdo() == null && n.getDerecho() != null)) {
                     eliminarCasoDos(n, padre);
@@ -285,23 +285,24 @@ public class ArbolAVL {
         }
     }
 
-    private void eliminarCasoTres(NodoAVL n) {
-        //Corregir, no calcula el balance de los nodos visitados
+    private void eliminarCasoTres(NodoAVL n, NodoAVL padreCandidato, NodoAVL candidato) {
         // El candidato es el menor elemento del HD
-        NodoAVL padreCandidato = n;
-        NodoAVL candidato = n.getDerecho();
-        while (candidato.getIzquierdo() != null) {
-            padreCandidato = candidato;
-            candidato = candidato.getIzquierdo();
-        }
-        if (padreCandidato == n) {
-            n.setElem(candidato.getElem());
-            n.setDerecho(candidato.getDerecho());
+        if(candidato.getIzquierdo()!=null){
+            // Si el nodo tiene un elemento menor, sigo bajando por los hijos izquierdos
+            eliminarCasoTres(n, candidato, candidato.getIzquierdo());
+            realizarBalance(padreCandidato, candidato);
         } else {
+            // Encuentra el nodo menor y copia su elemento en el nodo que se desea eliminar
             n.setElem(candidato.getElem());
-            padreCandidato.setIzquierdo(candidato.getDerecho());
+            // Si el padre del candidato es el nodo que se desea eliminar
+            if (padreCandidato.equals(n)){
+                // Le asigno el hijo derecho del candidato
+                n.setDerecho(candidato.getDerecho());
+            } else {
+                // Si no es el padre, le asigno como hijo Izquierdo los hijos derechos del candidato
+                padreCandidato.setIzquierdo(candidato.getDerecho());
+            }
         }
-
     }
 
     public String toString() {

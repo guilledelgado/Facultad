@@ -431,20 +431,8 @@ public class CopaAmerica {
     }
 
     public static void tablaMejoresEquipos(ArbolAVL equipos) {
-        Pila pilaEquipos = equipos.apilar();
-        pilaEquipos.toString();
-        HeapMax arbolHeap = new HeapMax(100);
-        while (pilaEquipos.obtenerTope() != null) {
-            Equipo aux = (Equipo) pilaEquipos.obtenerTope();
-            MejorEquipo auxMejorEquipo = new MejorEquipo(aux.getNombre(), aux.getGolesAFavor());
-            arbolHeap.insertar(auxMejorEquipo);
-            pilaEquipos.desapilar();
-        }
-        int i = 1;
-        while(!arbolHeap.esVacio()){
-            System.out.println(i+"- "+arbolHeap.recuperarCima().toString());
-            i++;
-            arbolHeap.eliminarCima();
-        }
+        Lista mejoresEquipos = equipos.listar();
+
+
     }
 }

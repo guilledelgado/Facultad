@@ -33,7 +33,7 @@ public class MetodoEulerModificado {
 
     public static double f(double x, double y) {
         //Ingreso manualmente la funcion
-        return x + (1 / (5 * y));
+        return -0.2877*(y-25);
     }
 
     public static double ecuacionPredictora(double x, double y, double h) {

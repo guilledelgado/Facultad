@@ -46,4 +46,8 @@ public class NodoAVL {
     public void setDerecho(NodoAVL derecho) {
         this.derecho = derecho;
     }
+
+    public int compareTo (Comparable elemento) {
+        return this.elem.compareTo(elemento);
+    }
 }
