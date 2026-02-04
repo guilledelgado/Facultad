@@ -20,7 +20,31 @@ public class TestAVL {
         System.out.println(arbol.toString());
         arbol.insertar(96);
         System.out.println(arbol.toString());
-        arbol.eliminar(45);
+        arbol.insertar(40);
+        System.out.println(arbol.toString());
+        arbol.insertar(1);
+        System.out.println(arbol.toString());
+        arbol.insertar(20);
+        System.out.println(arbol.toString());
+        arbol.insertar(36);
+        System.out.println(arbol.toString());
+        arbol.insertar(42);
+        System.out.println(arbol.toString());
+        arbol.insertar(50);
+        System.out.println(arbol.toString());
+        arbol.insertar(58);
+        System.out.println(arbol.toString());
+        arbol.insertar(67);
+        System.out.println(arbol.toString());
+        arbol.insertar(66);
+        System.out.println(arbol.toString());
+        arbol.eliminar(65);
+        System.out.println(arbol.toString());
+        arbol.eliminar(34);
+        System.out.println(arbol.toString());
+        arbol.eliminar(36);
+        System.out.println(arbol.toString());
+        arbol.eliminar(40);
         System.out.println(arbol.toString());
     }
 }

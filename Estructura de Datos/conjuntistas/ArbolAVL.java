@@ -290,6 +290,7 @@ public class ArbolAVL {
         if(candidato.getIzquierdo()!=null){
             // Si el nodo tiene un elemento menor, sigo bajando por los hijos izquierdos
             eliminarCasoTres(n, candidato, candidato.getIzquierdo());
+            candidato.recalcularAltura();
             realizarBalance(padreCandidato, candidato);
         } else {
             // Encuentra el nodo menor y copia su elemento en el nodo que se desea eliminar
