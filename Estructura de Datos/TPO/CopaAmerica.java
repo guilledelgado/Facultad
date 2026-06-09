@@ -426,7 +426,7 @@ public class CopaAmerica {
                 ciudad2 = sc.nextLine().toUpperCase();
                 aux1 = new Ciudad(ciudad1, false, false);
                 aux2 = new Ciudad(ciudad2, false, false);
-                System.out.println(ciudades.caminoMasCorto(aux1, aux2).toString());
+                //System.out.println(ciudades.caminoMasCorto(aux1, aux2).toString());
             }
     }
 
