@@ -245,43 +245,122 @@ public class GrafoEtiquetado {
         return exito;
     }
 
-    public Lista caminoMasCorto(Object nInicio, Object nDestino) {
+    public Lista caminoMasCorto(Object comienzo, Object destino) {
         Lista caminoActual = new Lista();
         Lista mejorCamino = this.listarEnProfundidad(); //dejo seteado al mejor camino con una lista con todos los nodos
                                                         //asi no me genera error al comparar por primera vez
-        Lista visitados = new Lista();
-        NodoVert auxI = ubicarVertice(nInicio);
-        NodoVert auxD = ubicarVertice(nDestino);
+        NodoVert auxI = ubicarVertice(comienzo);
+        NodoVert auxD = ubicarVertice(destino);
         if(auxI != null && auxD != null) {
-            caminoMasCortoAux(auxI, nDestino, mejorCamino, visitados, caminoActual);
+            caminoMasCortoAux(auxI, destino, mejorCamino, caminoActual);
         }
         return mejorCamino;
     }
 
-    private void caminoMasCortoAux(NodoVert n, Object destino, Lista mejorCamino, Lista visitados, Lista caminoActual) {
-        caminoActual.insertar(n.getElemento(), visitados.longitud() + 1);
-        if (n != null){
-            if (n.getElemento().equals(destino)) {
-                if(mejorCamino.longitud()<caminoActual.longitud()){ //si el camino actual es más corto que el mejor encontrado
+    private void caminoMasCortoAux(NodoVert n, Object destino, Lista mejorCamino, Lista caminoActual) {
+        if (n != null){ //¿deberia chequear si el nodo es nulo?
+            caminoActual.insertar(n.getElemento(), caminoActual.longitud() + 1);
+            if (n.getElemento().equals(destino)) { //llegamos al destino
+                if(mejorCamino.longitud()>caminoActual.longitud()){ //si el camino actual es más corto que el mejor encontrado
                     mejorCamino.setLista(caminoActual); //copia el camino
                 }
             } else {
-                //marco el vertice n como visitado
-                visitados.insertar(n.getElemento(), visitados.longitud() + 1);
                 NodoAdy aux = n.getPrimerAdy();
-                while (aux != null) {
-                    if(visitados.localizar(aux.getVertice().getElemento()) < 0) {
-                        caminoMasCortoAux(aux.getVertice(), destino, mejorCamino, visitados, caminoActual);
+                while (aux != null) { //Recorro sus nodos adyacentes
+                    if(caminoActual.localizar(aux.getVertice().getElemento()) < 0) { //si el nodo no fue visitado llamo recursivamente
+                        caminoMasCortoAux(aux.getVertice(), destino, mejorCamino, caminoActual);
                     }
                     aux = aux.getSigAdyacente();
                 }
-                //desmarco el vertice para que pueda entrar en otro camino
-                visitados.eliminarApariciones(n.getElemento());
             }
+            //desmarco el vertice para que pueda entrar en otro camino
+            caminoActual.eliminarApariciones(n.getElemento());
         }
-
     }
 
+    public Lista caminoMenorTiempo(Object comienzo, Object destino){
+        Lista caminoActual = new Lista();
+        Lista mejorCamino = new Lista();
+        double mejorTiempo = 100000;
+        double tiempoActual = 0;
+        NodoVert auxI = this.ubicarVertice(comienzo);
+        NodoVert auxD = this.ubicarVertice(destino);
+        if(auxI!=null && auxD != null){
+            caminoMenorTiempoAux(auxI, destino, mejorTiempo,tiempoActual, caminoActual, mejorCamino);
+        }
+        return mejorCamino;
+    }
+
+    private void caminoMenorTiempoAux(NodoVert n, Object destino, double mejorTiempo, double tiempoActual, Lista caminoActual, Lista mejorCamino){
+        if(n != null){
+            caminoActual.insertar(n.getElemento(), caminoActual.longitud()+1);
+            if(n.getElemento().equals(destino)) {
+                //Llego al nodo destino y verifico si su camino es más corto
+                if (tiempoActual < mejorTiempo) {
+                    //Guardo el mejor tiempo y mejor camino
+                    mejorCamino.setLista(caminoActual);
+                    mejorTiempo = tiempoActual;
+                }
+            } else {
+                NodoAdy aux = n.getPrimerAdy();
+                while(aux != null){ //Recorro los nodos adyacentes
+                    if(caminoActual.localizar(aux.getVertice().getElemento()) < 0){
+                        //Sumo el tiempo que tomaria llegar a ese nodo
+                        tiempoActual += aux.getEtiqueta();
+                        //Llamo recursivamente desde el nodo siguiente
+                        caminoMenorTiempoAux(aux.getVertice(), destino, mejorTiempo, tiempoActual, caminoActual, mejorCamino);
+                        //Al volver, resto el tiempo actual
+                        tiempoActual += aux.getEtiqueta();
+                    }
+                }
+            }
+            //desmarco el vertice para que pueda entrar en otro camino
+            caminoActual.eliminarApariciones(n.getElemento());
+        }
+    }
+
+    public Lista caminoMenorTiempoEvitandoNodo(Object comienzo, Object destino, Object evitar){
+        Lista caminoActual = new Lista();
+        Lista mejorCamino = new Lista();
+        double mejorTiempo = 100000;
+        double tiempoActual = 0;
+        NodoVert auxI = this.ubicarVertice(comienzo);
+        NodoVert auxD = this.ubicarVertice(destino);
+        if(auxI!=null && auxD != null && !comienzo.equals(evitar) && !comienzo.equals(evitar)){
+            //En caso de que el nodo a evitar no exista, simplemente buscaria el camino más rapido
+            //No busca el camino si los nodos inicio y fin no existen o si se los quiere poner como nodo a evitar
+            caminoMenorTiempoEvitandoNodoAux(auxI, destino, evitar, mejorTiempo,tiempoActual, caminoActual, mejorCamino);
+        }
+        return mejorCamino;
+    }
+
+    private void caminoMenorTiempoEvitandoNodoAux(NodoVert n, Object destino, Object evitar, double mejorTiempo, double tiempoActual, Lista caminoActual, Lista mejorCamino){
+        if(n != null && !n.getElemento().equals(evitar)){ //En caso de que el nodo que se ingrese es el que queremos evitar, no hago nada
+            caminoActual.insertar(n.getElemento(), caminoActual.longitud()+1);
+            if(n.getElemento().equals(destino)) {
+                //Llego al nodo destino y verifico si su camino es más corto
+                if (tiempoActual < mejorTiempo) {
+                    //Guardo el mejor tiempo y mejor camino
+                    mejorCamino.setLista(caminoActual);
+                    mejorTiempo = tiempoActual;
+                }
+            } else {
+                NodoAdy aux = n.getPrimerAdy();
+                while(aux != null){ //Recorro los nodos adyacentes
+                    if(caminoActual.localizar(aux.getVertice().getElemento()) < 0){
+                        //Sumo el tiempo que tomaria llegar a ese nodo
+                        tiempoActual += aux.getEtiqueta();
+                        //Llamo recursivamente desde el nodo siguiente
+                        caminoMenorTiempoAux(aux.getVertice(), destino, mejorTiempo, tiempoActual, caminoActual, mejorCamino);
+                        //Al volver, resto el tiempo actual
+                        tiempoActual += aux.getEtiqueta();
+                    }
+                }
+            }
+            //desmarco el vertice para que pueda entrar en otro camino
+            caminoActual.eliminarApariciones(n.getElemento());
+        }
+    }
 
     public Lista listarEnProfundidad(){
         Lista visitados = new Lista();
