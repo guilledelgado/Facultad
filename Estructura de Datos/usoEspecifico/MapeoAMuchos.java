@@ -17,21 +17,22 @@ public class MapeoAMuchos {
     }
 
     public boolean asociar(Object dom, Object ran) {
-        boolean exito = false;
+        boolean exito = true;
         int pos = Math.abs(dom.hashCode() % TAMANIO);
         NodoHashMapeoM aux = this.tabla[pos];
-        while (!exito && aux != null) {//Mientras no se haya insertado el rango
-            exito = aux.getDominio().equals(dom);//compara los dominios
-            if (exito) {//Si se encontro el dominio
-                aux.setRango(ran);//Inserto el rango
-            }
-            aux = aux.getEnlace();//recorre el enlace
-        }
-        if (!exito) {//Si no se encontro el dominio
-            this.tabla[pos] = new NodoHashMapeoM(dom, ran, null);
+        if (aux == null) {//Si no hay ningun nodo en el arreglo
+            this.tabla[pos] = new NodoHashMapeoM(dom, ran, null); //Se guarda en el arreglo
             this.cant++;
+        } else {// Si hay algun nodo en el arreglo
+            while (aux.getEnlace() != null && exito) {//Recorro los nodos
+                exito = aux.getRango().equals(ran);//Si el rango ya esta asociado, corta el recorrido
+                aux = aux.getEnlace();
+            }
+            if (exito) {
+                aux.setEnlace(new NodoHashMapeoM(dom, ran, null));
+            }
         }
-        return !exito;
+        return exito;
     }
 
     public boolean desasociar(Object dom, Object ran) {

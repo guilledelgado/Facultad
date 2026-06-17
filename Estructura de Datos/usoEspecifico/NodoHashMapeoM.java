@@ -5,13 +5,14 @@ import lineales.dinamicas.Lista;
 public class NodoHashMapeoM {
     // Atributos
     private Object dominio;
-    private Object rango;
+    private Lista rango;
     private NodoHashMapeoM enlace;
 
     // Constructores
     public NodoHashMapeoM(Object dom, Object ran, NodoHashMapeoM nodo){
         this.dominio = dom;
-        this.rango = ran;
+        rango = new Lista();
+        rango.insertar(ran, 1);
         this.enlace = nodo;
     }
 
@@ -20,17 +21,13 @@ public class NodoHashMapeoM {
         return dominio;
     }
 
-    public Object getRango(){
-        return rango;
-    }
-
     public NodoHashMapeoM getEnlace(){
         return enlace;
     }
 
     //Modificadores
-    public void setRango(Object ran){
-        this.rango = ran;
+    public void agregarRango(Object ran){
+        rango.insertar(ran, rango.longitud() + 1);
     }
 
     public void setEnlace(NodoHashMapeoM nodo){
