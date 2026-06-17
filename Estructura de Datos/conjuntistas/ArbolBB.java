@@ -403,4 +403,21 @@ public class ArbolBB {
             }
         }
     }
+
+    public String imprimirMayorMenor(){
+        String devuelve = "";
+        if(this.raiz != null){
+            imprimirMayorMenorAux(this.raiz, devuelve);
+        }
+        return devuelve;
+    }
+
+    private String imprimirMayorMenorAux(NodoABB nodo, String devuelve){
+        if(nodo != null){
+            imprimirMayorMenorAux(nodo.getDerecho(), devuelve);
+            devuelve = devuelve + nodo.getElem().toString() + " ";
+            imprimirMayorMenorAux(nodo.getIzquierdo(), devuelve);
+        }
+        return devuelve;
+    }
 }

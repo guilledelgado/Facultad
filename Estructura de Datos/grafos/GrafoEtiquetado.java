@@ -362,6 +362,34 @@ public class GrafoEtiquetado {
         }
     }
 
+    public Lista listarTodosLosCaminos(Object comienzo, Object destino){
+        Lista caminos = new Lista();
+        Lista caminoActual = new Lista();
+        NodoVert auxC = this.ubicarVertice(comienzo);
+        NodoVert auxD = this.ubicarVertice(destino);
+        if(auxC != null && auxD != null){
+            listarTodosLosCaminosAux(auxC, destino, caminos, caminoActual);
+        }
+        return caminos;
+    }
+
+    private void listarTodosLosCaminosAux(NodoVert n, Object destino, Lista caminos, Lista caminoActual){
+        if(n != null){
+            caminoActual.insertar(n.getElemento(), caminoActual.longitud()+1);
+            if(n.getElemento().equals(destino)){
+                caminos.insertar(caminoActual, caminos.longitud()+1);
+            } else {
+                NodoAdy aux = n.getPrimerAdy();
+                while(aux != null){
+                    if(caminoActual.localizar(aux.getVertice().getElemento()) < 0){
+                        listarTodosLosCaminosAux(aux.getVertice(), destino, caminos, caminoActual);
+                    }
+                }
+            }
+            caminoActual.eliminarApariciones(n.getElemento());
+        }
+    }
+
     public Lista listarEnProfundidad(){
         Lista visitados = new Lista();
         // define un vertice donde comenzar a recorrer

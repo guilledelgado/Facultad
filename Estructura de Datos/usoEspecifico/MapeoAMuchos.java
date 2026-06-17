@@ -20,30 +20,29 @@ public class MapeoAMuchos {
         boolean exito = false;
         int pos = Math.abs(dom.hashCode() % TAMANIO);
         NodoHashMapeoM aux = this.tabla[pos];
-        while (!exito && aux != null) {
-            exito = aux.getDominio().equals(dom);
-            if (exito) {
-                aux.addRango(ran);
+        while (!exito && aux != null) {//Mientras no se haya insertado el rango
+            exito = aux.getDominio().equals(dom);//compara los dominios
+            if (exito) {//Si se encontro el dominio
+                aux.setRango(ran);//Inserto el rango
             }
-            aux = aux.getEnlace();
+            aux = aux.getEnlace();//recorre el enlace
         }
-        if (!exito) {
-            this.tabla[pos] = new NodoHashMapeoM(dom, ran, this.tabla[pos]);
+        if (!exito) {//Si no se encontro el dominio
+            this.tabla[pos] = new NodoHashMapeoM(dom, ran, null);
             this.cant++;
         }
         return !exito;
     }
 
     public boolean desasociar(Object dom, Object ran) {
-        int pos = Math.abs(dom.hashCode() % TAMANIO);
-        NodoHashMapeoM aux = this.tabla[pos];
-        NodoHashMapeoM aux2 = null;
+        int pos = Math.abs(dom.hashCode() % TAMANIO);//Busco la posicion
+        NodoHashMapeoM aux = this.tabla[pos];//Obtengo el primer nodo
+        NodoHashMapeoM aux2 = null;//Auxiliar para eliminar
         boolean exito = false;
         while (!exito && aux != null) {
-            exito = aux.getDominio().equals(dom);
+            exito = aux.getDominio().equals(dom);//
             if (exito) {
-                aux.quitarRango(ran);
-                if (aux.getRango().esVacia()) {
+                if (aux.getRango()) {//ARREGLAR EL MAPEO PARA LISTAR LOS MEJORES EQUIPOS
                     if (aux2 == null) {
                         tabla[pos] = null;
                     } else {

@@ -2,6 +2,8 @@ package TPO;
 
 import java.io.*;
 import java.util.Scanner;
+
+import conjuntistas.ArbolBB;
 import lineales.dinamicas.*;
 import conjuntistas.ArbolAVL;
 import conjuntistas.HeapMax;
@@ -413,26 +415,86 @@ public class CopaAmerica {
         Scanner sc = new Scanner(System.in);
         Ciudad aux1, aux2;
         String ciudad1, ciudad2;
+        Lista resultado;
         int opcion;
             System.out.println("1. Obtener la ruta con el menor tiempo de viaje");
             System.out.println("2. Obtener la ruta con la menor cantidad de escalas");
-            System.out.println("3. Volver al menu principal");
+            System.out.println("3. Obtener la ruta con el menor tiempo de viaje evitando una ciudad");
+            System.out.println("4. Obtener todas las rutas con alojamiento");
+            System.out.println("5. Volver al menu principal");
             opcion = sc.nextInt();
             sc.nextLine();
-            if (opcion == 2) {
-                System.out.println("Ingrese la primer ciudad");
-                ciudad1 = sc.nextLine().toUpperCase();
-                System.out.println("Ingrese la segunda ciudad");
-                ciudad2 = sc.nextLine().toUpperCase();
-                aux1 = new Ciudad(ciudad1, false, false);
-                aux2 = new Ciudad(ciudad2, false, false);
-                //System.out.println(ciudades.caminoMasCorto(aux1, aux2).toString());
+            System.out.println("Ingrese la ciudad origen");
+            ciudad1 = sc.nextLine().toUpperCase();
+            System.out.println("Ingrese la ciudad destino");
+            ciudad2 = sc.nextLine().toUpperCase();
+            aux1 = new Ciudad(ciudad1, false, false);
+            aux2 = new Ciudad(ciudad2, false, false);
+            switch (opcion) {
+                case 1:
+                    resultado = ciudades.caminoMenorTiempo(aux1, aux2);
+                    System.out.println("El camino con el menor tiempo de viaje es: ");
+                    System.out.println(resultado.toString());
+                    break;
+                case 2:
+                    resultado = ciudades.caminoMasCorto(aux1, aux2);
+                    System.out.println("El camino con menos escalas es: ");
+                    System.out.println(resultado.toString());
+                    break;
+                case 3:
+                    System.out.println("Ingrese la ciudad que quiere evitar");
+                    String ciudadEvitar = sc.nextLine().toUpperCase();
+                    Ciudad aux3 = new Ciudad(ciudadEvitar, false, false);
+                    resultado = ciudades.caminoMenorTiempoEvitandoNodo(aux1, aux2, aux3);
+                    System.out.println("El camino con menos escalas sin pasar por la ciudad " + ciudadEvitar + " es: ");
+                    System.out.println(resultado.toString());
+                    break;
+                case 4:
+                    resultado = ciudades.listarTodosLosCaminos(aux1, aux2);
+                    filtrarCiudadesConAlojamiento(resultado);
+                    System.out.println("Las rutas con alojamiento son: ");
+                    System.out.println(resultado.toString());
+                    break;
+
             }
+
+    }
+
+    public static void filtrarCiudadesConAlojamiento(Lista caminos) {
+        //Filtro los caminos con alojamiento
+        //Es una lista de listas
+        int i = 0;
+        int j = 1;
+        boolean hayAlojamiento = false;
+        while (caminos.recuperar(i) != null){//Recorre la lista
+            Lista aux = (Lista) caminos.recuperar(i);//Recupera la lista
+            while(aux.recuperar(j) != null && !hayAlojamiento){//Recorre el camino de ciudades
+                Ciudad ciudadAux = (Ciudad) aux.recuperar(j);
+                if(ciudadAux.getAlojamientoDisponible()){//Si la ciudad tiene alojamiento
+                    hayAlojamiento = true; //Corto la ejecucion del while
+                } else {
+                    if(aux.recuperar(j+1)==null){//Si llegue al ultimo nodo del camino y no tiene alojamiento
+                        //Elimino el camino
+                        caminos.eliminar(i);
+                    }
+                }
+                j++;
+            }
+            j=1;//al finalizar la ejecucion del camino, reinicio la variable
+            i++;
+        }
     }
 
     public static void tablaMejoresEquipos(ArbolAVL equipos) {
-        Lista mejoresEquipos = equipos.listar();
-
-
+        Lista listaEquipos = equipos.listar();
+        ArbolBB arbolMejoresEquipos = new ArbolBB();
+        int i = 0;
+        while(listaEquipos.recuperar(i) != null){
+            Equipo aux = (Equipo) listaEquipos.recuperar(i);
+            MejorEquipo mejorEquipo = new MejorEquipo(aux.getNombre(),aux.getGolesAFavor());
+            arbolMejoresEquipos.insertar(mejorEquipo);
+            i++;
+        }
+        arbolMejoresEquipos.
     }
 }
